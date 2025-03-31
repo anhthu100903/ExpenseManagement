@@ -1,7 +1,7 @@
 package com.example.ExpenseManagement.Service.Impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -11,24 +11,41 @@ import com.example.ExpenseManagement.Repository.UserRepository;
 import com.example.ExpenseManagement.Service.UserService;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Service
-@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UserServiceImpl implements UserService{
-	UserRepository userRepository;
-	UserMapper userMapper;
+public class UserServiceImpl implements UserService {
 
-	@Override
-    @PostAuthorize("returnObject.username == authentication.name")
+    final UserRepository userRepository;
+    final UserMapper userMapper;
+    
+ // Constructor thủ công
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
+
+    @Override
     public UserResponse getUserById(Integer id) {
         return userMapper.toUserResponse(
-                userRepository.findById(id).orElseThrow(() 
-                		-> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
-                );
+                userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
+        );
+    }
+
+    @Override
+    public UserResponse getUserByUsername(String username) {
+        return userMapper.toUserResponse(
+                userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
+        );
+    }
+
+    @Override
+    public UserResponse getUserByEmail(String email) {
+        return userMapper.toUserResponse(
+                userRepository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
+        );
     }
 }

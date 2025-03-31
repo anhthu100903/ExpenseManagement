@@ -12,7 +12,7 @@ import com.example.ExpenseManagement.DTO.Response.UserResponse;
 import com.example.ExpenseManagement.Service.UserService;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("users")
 public class UserController {
 	private final UserService userService;
 	
@@ -20,11 +20,24 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-	
-	// API để lấy thông tin người dùng theo ID
+	// API để lấy thông tin người dùng theo username
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserResponse getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
+    }
+	
+	// API để lấy thông tin người dùng theo username
+    @GetMapping("/username/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserResponse getUserByUsername(@PathVariable String username) {
+        return userService.getUserByUsername(username);
+    }
+    
+    // API để lấy thông tin người dùng theo ID
+    @GetMapping("/email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserResponse getUserByEmail(@PathVariable String email) {
+        return userService.getUserByEmail(email);
     }
 }
