@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ExpenseManagement.DTO.Request.UserRequest;
 import com.example.ExpenseManagement.DTO.Response.UserResponse;
 import com.example.ExpenseManagement.Service.UserService;
 
@@ -39,5 +42,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserResponse getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
+    }
+    
+    //API đăng ký tài khoản người dùng
+    @PostMapping
+    public UserResponse createUser(@RequestBody UserRequest dto) {
+        return userService.createUser(dto);
     }
 }
