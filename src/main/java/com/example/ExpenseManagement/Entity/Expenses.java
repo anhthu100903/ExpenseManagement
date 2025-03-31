@@ -33,22 +33,22 @@ public class Expenses {
 	
 	@ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    User user;
 	
 	@Column(nullable = false)
-    private Double amount;
+    Double amount;
 
     @Column
-    private String category; // Ví dụ: Ăn uống, Giải trí, Đi lại
+    String category; // Ví dụ: Ăn uống, Giải trí, Đi lại
 
     @Column
-    private String description;  // Chi tiết về khoản chi tiêu
+    String description;  // Chi tiết về khoản chi tiêu
 
     @Column
-    private LocalDate date;  // Ngày chi tiêu
+    LocalDate date;  // Ngày chi tiêu
 
     @Column(nullable = false)
-    private LocalDateTime createdAt; // Cột để lưu thời gian tạo
+    LocalDateTime createdAt; // Cột để lưu thời gian tạo
     
     @PrePersist
     protected void onCreate() {

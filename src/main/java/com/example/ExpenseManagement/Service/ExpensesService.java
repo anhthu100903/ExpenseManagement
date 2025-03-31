@@ -1,5 +1,11 @@
 package com.example.ExpenseManagement.Service;
 
-public interface ExpensesService {
+import java.util.List;
 
+import com.example.ExpenseManagement.DTO.ExpensesDTO;
+
+public interface ExpensesService {
+	public ExpensesDTO getExpensesById(int id);
+	public ExpensesDTO addExpense(ExpensesDTO expensesDTO);
+	public List<ExpensesDTO> getAllExpensesByUserId(int userId);
 }
