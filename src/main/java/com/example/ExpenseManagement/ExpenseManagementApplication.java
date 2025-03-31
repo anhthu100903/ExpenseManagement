@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.example.ExpenseManagement", "com.example.ExpenseManagement.Mapper"})
+@ComponentScan(basePackages = "com.example.ExpenseManagement")
 public class ExpenseManagementApplication {
 
 	public static void main(String[] args) {

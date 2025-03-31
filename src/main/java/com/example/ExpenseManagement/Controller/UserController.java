@@ -28,16 +28,16 @@ public class UserController {
     }
 	
 	// API để lấy thông tin người dùng theo username
-    @GetMapping("/username/{username}")
-    @ResponseStatus(HttpStatus.OK)
-    public UserResponse getUserByUsername(@PathVariable String username) {
-        return userService.getUserByUsername(username);
-    }
-    
-    // API để lấy thông tin người dùng theo ID
-    @GetMapping("/email/{email}")
-    @ResponseStatus(HttpStatus.OK)
-    public UserResponse getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
-    }
+//    @GetMapping("/username/{username}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public UserResponse getUserByUsername(@PathVariable String username) {
+//        return userService.getUserByUsername(username);
+//    }
+//    
+//    // API để lấy thông tin người dùng theo ID
+//    @GetMapping("/email/{email}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public UserResponse getUserByEmail(@PathVariable String email) {
+//        return userService.getUserByEmail(email);
+//    }
 }

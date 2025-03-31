@@ -35,17 +35,17 @@ public class UserServiceImpl implements UserService {
         );
     }
 
-    @Override
-    public UserResponse getUserByUsername(String username) {
-        return userMapper.toUserResponse(
-                userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
-        );
-    }
-
-    @Override
-    public UserResponse getUserByEmail(String email) {
-        return userMapper.toUserResponse(
-                userRepository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
-        );
-    }
+//    @Override
+//    public UserResponse getUserByUsername(String username) {
+//        return userMapper.toUserResponse(
+//                userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
+//        );
+//    }
+//
+//    @Override
+//    public UserResponse getUserByEmail(String email) {
+//        return userMapper.toUserResponse(
+//                userRepository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found"))
+//        );
+//    }
 }
