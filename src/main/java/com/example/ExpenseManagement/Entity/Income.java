@@ -33,19 +33,19 @@ public class Income {
 	
 	@ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    User user;
 
     @Column(nullable = false)
-    private Double amount;
+    Double amount;
 
     @Column
-    private String source; // Ví dụ: Lương, Thưởng, Đầu tư
+    String source; // Ví dụ: Lương, Thưởng, Đầu tư
 
     @Column
-    private LocalDate date;
+    LocalDate date;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt; // Cột để lưu thời gian tạo
+    LocalDateTime createdAt; // Cột để lưu thời gian tạo
     
     @PrePersist
     protected void onCreate() {

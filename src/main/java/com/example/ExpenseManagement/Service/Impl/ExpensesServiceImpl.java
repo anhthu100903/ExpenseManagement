@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -12,7 +11,6 @@ import com.example.ExpenseManagement.DTO.ExpensesDTO;
 import com.example.ExpenseManagement.Entity.Expenses;
 import com.example.ExpenseManagement.Entity.User;
 import com.example.ExpenseManagement.Mapper.ExpensesMapper;
-import com.example.ExpenseManagement.Mapper.UserMapper;
 import com.example.ExpenseManagement.Repository.ExpensesRepository;
 import com.example.ExpenseManagement.Repository.UserRepository;
 import com.example.ExpenseManagement.Service.ExpensesService;

@@ -39,10 +39,10 @@ public class Group {
 	boolean active; //trạng thái hoạt động của group
 	
 	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<GroupMember> groupMember = new HashSet<>();
+    Set<GroupMember> groupMember = new HashSet<>();
 	
 	@ManyToOne
     @JoinColumn(name = "created_by", nullable = false)
-    private User createdBy;
+    User createdBy;
 }
 

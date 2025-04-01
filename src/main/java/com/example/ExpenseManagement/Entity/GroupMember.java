@@ -31,15 +31,15 @@ public class GroupMember {
 	
 	@ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    User user;
 
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
-    private Group group;
+    Group group;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role;
+    Role role;
 
     public enum Role {
         ADMIN, MEMBER
