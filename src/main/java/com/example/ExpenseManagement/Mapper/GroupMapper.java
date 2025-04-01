@@ -13,12 +13,12 @@ import com.example.ExpenseManagement.Entity.User;
 @Mapper(componentModel = "spring")
 public interface GroupMapper {
 	 // Ánh xạ từ Group entity sang GroupDTO
-//    @Mapping(source = "groupMember", target = "groupMember")  // Ánh xạ groupMember
+    @Mapping(source = "groupMember", target = "groupMember")  // Ánh xạ groupMember
     @Mapping(source = "createdBy", target = "createdBy")  // Ánh xạ createdBy
     GroupResponse toGroupDTO(Group group);
 
     // Ánh xạ từ GroupDTO sang Group entity
-//    @Mapping(source = "groupMember", target = "groupMember")  // Ánh xạ groupMember
+    @Mapping(source = "groupMember", target = "groupMember")  // Ánh xạ groupMember
     @Mapping(source = "createdBy", target = "createdBy")  // Ánh xạ createdBy
     Group toGroupEntity(GroupResponse groupResponse);
 

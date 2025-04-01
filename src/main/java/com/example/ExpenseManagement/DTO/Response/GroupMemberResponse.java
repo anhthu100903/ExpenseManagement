@@ -1,6 +1,6 @@
 package com.example.ExpenseManagement.DTO.Response;
 
-import java.util.Set;
+import com.example.ExpenseManagement.DTO.GroupMemberDTO;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,14 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class GroupResponse {
+public class GroupMemberResponse {
 	int id;
-	String name;
-	boolean active;
-	Set<GroupMemberResponse> groupMember;
-	UserResponse createdBy;
+	UserResponse user;
+	GroupResponse group;
+	String role;
 }
