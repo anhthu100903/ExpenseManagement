@@ -1,5 +1,8 @@
 package com.example.ExpenseManagement.Controller;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,16 @@ public class GroupController {
 	@GetMapping("/{id}")
 	public GroupResponse getGroupById(@PathVariable Integer id) {
 		return groupService.getGroupById(id);
+	}
+	
+	@GetMapping("/createdBy/{userId}")
+	public ResponseEntity<GroupResponse> getGroupByCreatedById(@PathVariable Integer userId) {
+		return ResponseEntity.ok(groupService.getGroupByCreatedById(userId));
+	}
+	
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<List<GroupResponse>> getGroupByUserId(@PathVariable Integer userId) {
+		return ResponseEntity.ok(groupService.getGroupByUserId(userId));
 	}
 
 }
