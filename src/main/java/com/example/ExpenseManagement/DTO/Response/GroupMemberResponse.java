@@ -1,6 +1,5 @@
 package com.example.ExpenseManagement.DTO.Response;
 
-import com.example.ExpenseManagement.DTO.GroupMemberDTO;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -15,6 +14,6 @@ import lombok.experimental.FieldDefaults;
 public class GroupMemberResponse {
 	int id;
 	UserResponse user;
-	GroupResponse group;
+//	GroupResponse group;
 	String role;
 }

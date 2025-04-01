@@ -3,7 +3,7 @@ package com.example.ExpenseManagement.Mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.example.ExpenseManagement.DTO.GroupMemberDTO;
+import com.example.ExpenseManagement.DTO.Response.GroupMemberResponse;
 import com.example.ExpenseManagement.DTO.Response.GroupResponse;
 import com.example.ExpenseManagement.DTO.Response.UserResponse;
 import com.example.ExpenseManagement.Entity.Group;
@@ -14,11 +14,11 @@ import com.example.ExpenseManagement.Entity.User;
 public interface GroupMemberResponseMapper {
 	// Chuyển từ entity sang DTO
     @Mapping(source = "role", target = "role") // Map enum Role sang String
-    GroupMemberDTO toGroupMemberDTO(GroupMember groupMember);
+    GroupMemberResponse toGroupMemberResponse(GroupMember groupMember);
 
     // Chuyển từ DTO sang entity
     @Mapping(source = "role", target = "role") // Chuyển String về enum Role
-    GroupMember toGroupMemberEntity(GroupMemberDTO groupMemberDTO);
+    GroupMember toGroupMemberEntity(GroupMemberResponse groupMemberResponse);
     
     // Các ánh xạ phụ (nếu cần), ví dụ ánh xạ User và Group từ entity sang DTO
     UserResponse toUserResponse(User user);

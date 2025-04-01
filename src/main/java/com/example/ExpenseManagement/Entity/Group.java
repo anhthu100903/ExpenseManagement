@@ -1,7 +1,9 @@
 package com.example.ExpenseManagement.Entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,7 +41,8 @@ public class Group {
 	boolean active; //trạng thái hoạt động của group
 	
 	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<GroupMember> groupMember = new HashSet<>();
+	@JsonManagedReference  // Ánh xạ phía "cha", giúp tránh vòng lặp
+	List<GroupMember> groupMember = new ArrayList<>();
 	
 	@ManyToOne
     @JoinColumn(name = "created_by", nullable = false)

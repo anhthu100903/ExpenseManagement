@@ -1,6 +1,6 @@
 package com.example.ExpenseManagement.DTO.Response;
 
-import java.util.Set;
+import java.util.List;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,6 @@ public class GroupResponse {
 	int id;
 	String name;
 	boolean active;
-	Set<GroupMemberResponse> groupMember;
+	List<GroupMemberResponse> groupMember;
 	UserResponse createdBy;
 }

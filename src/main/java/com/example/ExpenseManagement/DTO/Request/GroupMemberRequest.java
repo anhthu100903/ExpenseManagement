@@ -1,8 +1,5 @@
 package com.example.ExpenseManagement.DTO.Request;
 
-import com.example.ExpenseManagement.DTO.GroupMemberDTO;
-import com.example.ExpenseManagement.DTO.Response.GroupResponse;
-import com.example.ExpenseManagement.DTO.Response.UserResponse;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

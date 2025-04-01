@@ -1,5 +1,7 @@
 package com.example.ExpenseManagement.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,6 +37,7 @@ public class GroupMember {
 
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
+    @JsonBackReference  // Ngừng ánh xạ đối tượng ngược lại
     Group group;
 
     @Enumerated(EnumType.STRING)

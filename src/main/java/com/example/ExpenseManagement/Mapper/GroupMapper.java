@@ -3,7 +3,7 @@ package com.example.ExpenseManagement.Mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.example.ExpenseManagement.DTO.GroupMemberDTO;
+import com.example.ExpenseManagement.DTO.Response.GroupMemberResponse;
 import com.example.ExpenseManagement.DTO.Response.GroupResponse;
 import com.example.ExpenseManagement.DTO.Response.UserResponse;
 import com.example.ExpenseManagement.Entity.Group;
@@ -22,9 +22,9 @@ public interface GroupMapper {
     @Mapping(source = "createdBy", target = "createdBy")  // Ánh xạ createdBy
     Group toGroupEntity(GroupResponse groupResponse);
 
-    // Ánh xạ User sang UserResponse (giả sử bạn đã có một mapper UserMapper)
+    // Ánh xạ User sang UserResponse
     UserResponse toUserResponse(User user);
 
-    // Ánh xạ GroupMember sang GroupMemberDTO (giả sử bạn đã có một mapper GroupMemberMapper)
-    GroupMemberDTO toGroupMemberDTO(GroupMember groupMember);
+    // Ánh xạ GroupMember sang GroupMemberDTO (
+    GroupMemberResponse toGroupMemberResponse(GroupMember groupMember);
 }
