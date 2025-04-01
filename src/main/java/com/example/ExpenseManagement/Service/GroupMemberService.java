@@ -6,5 +6,5 @@ import com.example.ExpenseManagement.DTO.Response.GroupMemberResponse;
 public interface GroupMemberService {
 	public GroupMemberResponse getGroupMemberById(int id);
 	public GroupMemberResponse createGroupMember(GroupMemberRequest groupMemberRequest);
-	public GroupMemberResponse updateActive(boolean active);
+	public GroupMemberResponse updateActive(int id, boolean active);
 }
