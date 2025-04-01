@@ -8,10 +8,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.ExpenseManagement.DTO.Request.GroupRequest;
 import com.example.ExpenseManagement.DTO.Response.GroupResponse;
 import com.example.ExpenseManagement.Entity.Group;
+import com.example.ExpenseManagement.Entity.GroupMember;
+import com.example.ExpenseManagement.Entity.User;
 import com.example.ExpenseManagement.Mapper.GroupMapper;
+import com.example.ExpenseManagement.Repository.GroupMemberRepository;
 import com.example.ExpenseManagement.Repository.GroupRepository;
+import com.example.ExpenseManagement.Repository.UserRepository;
 import com.example.ExpenseManagement.Service.GroupService;
 
 import jakarta.transaction.Transactional;
@@ -25,6 +30,8 @@ import lombok.experimental.FieldDefaults;
 public class GroupServiceImpl implements GroupService{
 	
 	GroupRepository groupRepository;
+	UserRepository userRepository;
+	GroupMemberRepository groupMemberRepository;
 	GroupMapper groupMapper;
 
 	@Override
@@ -51,6 +58,7 @@ public class GroupServiceImpl implements GroupService{
     }
 	
 	@Transactional
+	@Override
     public List<GroupResponse> getGroupByUserId(int userID) {
         // Truy vấn ds Group theo userID (dựa vào mối quan hệ group member)
         List<Group> groups = groupRepository.findByGroupMember_User_Id(userID);
@@ -64,6 +72,34 @@ public class GroupServiceImpl implements GroupService{
         return groups.stream()
                      .map(groupMapper::toGroupDTO)
                      .collect(Collectors.toList());
+    }
+	
+	@Transactional
+	@Override
+    public GroupResponse createGroup(GroupRequest groupRequest) {
+        //Lấy thông tin người tạo nhóm
+        User createdBy = userRepository.findById(groupRequest.getCreatedBy())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
+        //Tạo Group
+        Group group = new Group();
+        group.setName(groupRequest.getName());
+        group.setCreatedBy(createdBy); // Người tạo nhóm
+
+        // 3. Lưu Group vào cơ sở dữ liệu
+        group = groupRepository.save(group);
+
+        // 4. Tạo GroupMember cho người tạo nhóm
+        GroupMember groupMember = new GroupMember();
+        groupMember.setUser(createdBy);  // Người tạo là thành viên
+        groupMember.setGroup(group);     // Liên kết với Group
+        groupMember.setRole(false); //người tạo group là false còn lại sẽ là true
+
+        //Lưu GroupMember
+        groupMemberRepository.save(groupMember);
+
+        //Ánh xạ từ Group entity sang GroupResponse (DTO)
+        return groupMapper.toGroupDTO(group);
     }
 
 }

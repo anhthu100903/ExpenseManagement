@@ -40,11 +40,6 @@ public class GroupMember {
     @JsonBackReference  // Ngừng ánh xạ đối tượng ngược lại
     Group group;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    Role role;
-
-    public enum Role {
-        ADMIN, MEMBER
-    }
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    boolean role;
 }

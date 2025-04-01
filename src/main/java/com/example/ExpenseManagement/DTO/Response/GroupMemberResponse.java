@@ -15,5 +15,5 @@ public class GroupMemberResponse {
 	int id;
 	UserResponse user;
 //	GroupResponse group;
-	String role;
+	boolean role;
 }

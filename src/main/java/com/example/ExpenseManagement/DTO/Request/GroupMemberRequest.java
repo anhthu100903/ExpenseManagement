@@ -15,5 +15,5 @@ public class GroupMemberRequest {
 	int id;
 	int userId;
 	int groupId;
-	String role;
+	boolean role;
 }
