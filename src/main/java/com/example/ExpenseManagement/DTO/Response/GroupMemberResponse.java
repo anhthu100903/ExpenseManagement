@@ -14,6 +14,6 @@ import lombok.experimental.FieldDefaults;
 public class GroupMemberResponse {
 	int id;
 	UserResponse user;
-//	GroupResponse group;
 	boolean role;
+	boolean active;
 }

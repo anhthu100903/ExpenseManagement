@@ -42,4 +42,7 @@ public class GroupMember {
 
     @Column(nullable = false, columnDefinition = "boolean default true")
     boolean role;
+    
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    boolean active;
 }
